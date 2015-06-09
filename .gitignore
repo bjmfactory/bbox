@@ -1,0 +1,6 @@
+# Meteor
+.meteor/local
+.meteor/meteorite
+
+# System
+.DS_Store
