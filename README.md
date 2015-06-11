@@ -1,3 +1,3 @@
 # Brevity Box
 
-The *most* useless social network.
+The social network with the least features.
