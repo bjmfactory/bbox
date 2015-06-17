@@ -1,1 +1,10 @@
 /* CSS declarations go here */
+
+body {
+  text-align: center;
+}
+
+.box a {
+  display: block;
+  margin: 20px;
+}
