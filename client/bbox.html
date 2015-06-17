@@ -1,14 +1,20 @@
 <head>
-  <title>bbox</title>
+  <title>Brevity Box</title>
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
+  <div class="container">
+    <header>
+      <h1>Brevity Box</h1>
+    </header>
+    <div class="box">
+      {{#each links}}
+        {{> link}}
+      {{/each}}
+    </div>
+  </div>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="link">
+  <a href="{{url}}">{{title}}</a>
 </template>
