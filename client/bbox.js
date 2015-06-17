@@ -1,18 +1,10 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
+  Template.body.helpers({
+    links: [
+      { title: "hello", url: "http://google.com"},
+      { title: "hello w", url: "http://google.com"},
+      { title: "hello world", url: "http://google.com"}
+    ]
   });
 }
 
