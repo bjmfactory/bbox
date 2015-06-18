@@ -1,24 +1,30 @@
-<head>
-  <title>Brevity Box</title>
-</head>
+<template name="home">
+  {{> header}}
+  <body>
+    <div class="container">
+      <header>
+        <h1>Brevity Box</h1>
+      </header>
+      {{> loginButtons}}
+      <div class="box">
+        {{#each links}}
+          {{> link}}
+        {{/each}}
+      </div>
+      <div class="editLinks">
+        {{#each links}}
+          {{> editLink}}
+        {{/each}}
+      </div>
+    </div>
+  </body>
+</template>
 
-<body>
-  <div class="container">
-    <header>
-      <h1>Brevity Box</h1>
-    </header>
-    <div class="box">
-      {{#each links}}
-        {{> link}}
-      {{/each}}
-    </div>
-    <div class="editLinks">
-      {{#each links}}
-        {{> editLink}}
-      {{/each}}
-    </div>
-  </div>
-</body>
+<template name="header">
+  <head>
+    <title>Brevity Box</title>
+  </head>
+</template>
 
 <template name="link">
   <a href="{{url}}">{{title}}</a>
@@ -32,12 +38,4 @@
     <button class="delete">&times;</button>
   </form>
 </template>
-
-<!-- <template name="box">
-  <div class="box">
-    {{#each links}}
-      {{> link}}
-    {{/each}}
-  </div>
-</template> -->
 
