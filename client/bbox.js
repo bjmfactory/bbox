@@ -1,4 +1,5 @@
 Links = new Mongo.Collection("links");
+Meteor.subcribe("links");
 
 Template.body.helpers({
   links: function() {
