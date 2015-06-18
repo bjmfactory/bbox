@@ -8,27 +8,24 @@ Template.body.helpers({
 
 Template.body.events({
   "submit .editLink": function(event){
-    console.log("this: ", this)
-    console.log("event.target", event.target)
-
     var title = event.target.title.value;
     var url   = event.target.url.value;
-
-    Links.update(this._id, {
-      $set: {
-        title: title,
-        url: url,
-        updatedAt: new Date()
-      }
-    });
-
+    Meteor.call("editLink", this.owner, this._id, title, url)
     return false;
   },
 
   "click .delete": function(){
-    Links.remove(this._id);
+    Meteor.call("deleteLink", this._id)
   }
 })
+
+Router.route('/', function(){
+  this.render('home');
+})
+
+Accounts.ui.config({
+  passwordSignupFields: "USERNAME_ONLY"
+});
 
 
 
