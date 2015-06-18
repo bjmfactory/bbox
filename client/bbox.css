@@ -18,3 +18,8 @@ body {
   max-width: 500px;
   margin: auto;
 }
+
+input {
+  padding: 5px;
+  margin: 10px;
+}
