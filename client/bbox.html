@@ -7,6 +7,11 @@
     <header>
       <h1>Brevity Box</h1>
     </header>
+    <form class="new-link">
+      <input type="text" name="title" placeholder="title" />
+      <input type="text" name="url" placeholder="url" />
+      <input type="submit" value="Save Link">
+    </form>
     <div class="box">
       {{#each links}}
         {{> link}}
@@ -18,3 +23,12 @@
 <template name="link">
   <a href="{{url}}">{{title}}</a>
 </template>
+
+<!-- <template name="box">
+  <div class="box">
+    {{#each links}}
+      {{> link}}
+    {{/each}}
+  </div>
+</template> -->
+
