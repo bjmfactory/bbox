@@ -4,7 +4,16 @@ body {
   text-align: center;
 }
 
+.box {
+  margin: 20px;
+  border: 1px solid black;
+}
+
 .box a {
   display: block;
   margin: 20px;
+}
+
+.container {
+  max-width: 500px;
 }
