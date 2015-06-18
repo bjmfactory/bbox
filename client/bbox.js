@@ -7,19 +7,26 @@ Template.body.helpers({
 });
 
 Template.body.events({
-  "submit .new-link": function(event) {
+  "submit .editLink": function(event){
+    console.log("this: ", this)
+    console.log("event.target", event.target)
+
     var title = event.target.title.value;
     var url   = event.target.url.value;
-    console.log("title: ", title)
-    console.log("url: ", url)
 
-    Links.insert({
-      title: title,
-      url: url,
-      createdAt: new Date()
+    Links.update(this._id, {
+      $set: {
+        title: title,
+        url: url,
+        updatedAt: new Date()
+      }
     });
 
     return false;
+  },
+
+  "click .delete": function(){
+    Links.remove(this._id);
   }
 })
 
