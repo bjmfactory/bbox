@@ -20,8 +20,11 @@ Template.body.events({
   }
 })
 
-Router.route('/', function(){
-  this.render('home');
+Router.map(function(){
+  this.route('home', {
+    path: '/'
+  });
+  this.route('signup')
 })
 
 Accounts.ui.config({
