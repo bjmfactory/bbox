@@ -1,4 +1,4 @@
-/* CSS declarations go here */
+/* Alphabetical */
 
 body {
   text-align: center;
@@ -16,4 +16,5 @@ body {
 
 .container {
   max-width: 500px;
+  margin: auto;
 }
