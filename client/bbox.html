@@ -6,6 +6,9 @@
         <h1>Brevity Box</h1>
       </header>
       {{> loginButtons}}
+      <div class="createLinks">
+        {{> createLink}}
+      </div>
       <div class="box">
         {{#each links}}
           {{> link}}
@@ -39,15 +42,15 @@
   </form>
 </template>
 
-<template name="signup">
-  <form id="signup">
-    <h1>Sign Up</h1>
-    <input type="text" id="signupUsername" placeholder="Username">
-    <input type="password" id="signupPassword1" placeholder="Password">
-    <input type="password" id="signupPassword2" placeholder="Password Again">
-    <button>Submit</button>
+<template name="createLink">
+  <form class="createLink">
+    <input type="text" name="title" placeholder="title" />
+    <input type="text" name="url" placeholder="url" />
+    <input type="submit" value="Save Link">
   </form>
 </template>
+
+
 
 
 

@@ -11,7 +11,7 @@ Template.body.events({
   "submit .editLink": function(event){
     var title = event.target.title.value;
     var url   = event.target.url.value;
-    Meteor.call("editLink", this.owner, this._id, title, url)
+    Meteor.call("editLink", this.owner, this._id, title, url);
     return false;
   },
 
