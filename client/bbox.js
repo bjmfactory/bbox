@@ -7,19 +7,6 @@ Template.body.helpers({
   }
 });
 
-Template.body.events({
-  "submit .editLink": function(event){
-    var title = event.target.title.value;
-    var url   = event.target.url.value;
-    Meteor.call("editLink", this.owner, this._id, title, url);
-    return false;
-  },
-
-  "click .delete": function(){
-    Meteor.call("deleteLink", this._id)
-  }
-})
-
 Template.createLink.events({
   "submit .createLink": function(event){
     console.log("createLink called")
