@@ -1,4 +1,8 @@
-<template name="box">
-  <h1>Box Template</h1>
-  <p>Username: {{username}} </p>
+<template name="boxes">
+  <div class="box">
+    <h1>Box Template</h1>
+      {{#each links}}
+        {{> link}}
+      {{/each}}
+  </div>
 </template>
