@@ -1,9 +1,9 @@
 Links = new Mongo.Collection("links");
 Meteor.subscribe("links");
 
-Template.body.helpers({
+Template.home.helpers({
   links: function() {
-    return Links.find({});
+    return Links.find().fetch();
   }
 });
 
