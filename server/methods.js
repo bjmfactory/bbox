@@ -4,13 +4,15 @@ Meteor.methods({
       throw new Meteor.Error("not-authorized");
     }
 
+    var owner    = Meteor.userId();
+    var username = Meteor.user().username;
+
     Links.insert({
       title:     title,
       url:       url,
-      createdAt: new Date(),
-      updatedAt: new Date(),
-      owner:     Meteor.userId(),
-      username:  Meteor.user().username
+      owner:     owner,
+      username:  username,
+      createdAt: new Date()
     });
   },
 
