@@ -2,6 +2,7 @@ Links = new Mongo.Collection("links");
 Meteor.subscribe("links");
 
 
+// Routing
 Router.map(function(){
   this.route('home', {
     path: '/'
@@ -16,9 +17,18 @@ Router.route('/b/:username', function(){
   });
 });
 
+
+// Accounts
 Accounts.ui.config({
   passwordSignupFields: "USERNAME_ONLY"
 });
 
+
+// Helpers
+Template.home.helpers({
+  links: function() {
+    return Links.find().fetch();
+  }
+});
 
 
