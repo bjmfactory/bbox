@@ -27,7 +27,7 @@ Accounts.ui.config({
 // Helpers
 Template.home.helpers({
   links: function() {
-    return Links.find().fetch();
+    return Links.find({}, {sort: {createdAt: -1}, limit: 3}).fetch();
   }
 });
 
