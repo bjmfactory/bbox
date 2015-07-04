@@ -1,4 +1,5 @@
 Links = new Mongo.Collection("links");
+Users = Meteor.users;
 Meteor.subscribe("links");
 
 
@@ -12,7 +13,7 @@ Router.map(function(){
 Router.route('/u/:username', function(){
   this.render('user', {
     data: function(){
-      return Links.find({username: this.params.username}, {sort: {createdAt: -1}, limit: 3}).fetch();
+      return Users.findOne({username: this.params.username}).fetch();
     }
   });
 });
