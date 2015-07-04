@@ -1,8 +1,10 @@
 <template name="boxes">
-  <div class="box">
-    <h1>Box Template</h1>
-      {{#each links}}
-        {{> link}}
-      {{/each}}
-  </div>
+    {{#each users}}
+      <div class="box">
+        <h1>{{username}}</h1>
+        {{#each links username}}
+          {{> link}}
+        {{/each}}
+      </div>
+    {{/each}}
 </template>
