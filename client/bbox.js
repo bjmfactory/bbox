@@ -9,10 +9,10 @@ Router.map(function(){
   });
 })
 
-Router.route('/b/:username', function(){
-  this.render('box', {
+Router.route('/u/:username', function(){
+  this.render('user', {
     data: function(){
-      return Links.find({username: this.params.username});
+      return Links.find({username: this.params.username}, {sort: {createdAt: -1}, limit: 3}).fetch();
     }
   });
 });
