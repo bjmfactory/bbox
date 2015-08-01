@@ -1,19 +1,35 @@
 if (Meteor.isClient) {
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
-  });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
+  Template.body.helpers({
+    boxes: [
+      {
+        human: "bjmfactory",
+        t1:    "search",
+        u1:    "http://google.com",
+        t2:    "search the",
+        u2:    "http://google.com",
+        t3:    "search the world",
+        u3:    "http://google.com"
+      },
+      {
+        human: "wisegarb",
+        t1:    "shop",
+        u1:    "http://amazon.com",
+        t2:    "search the",
+        u2:    "http://google.com",
+        t3:    "search the world",
+        u3:    "http://google.com"
+      },
+      {
+        human: "boheim",
+        t1:    "socialize",
+        u1:    "http://facebook.com",
+        t2:    "search the",
+        u2:    "http://google.com",
+        t3:    "search the world",
+        u3:    "http://google.com"
+      }
+    ]
+  })
 }
 
 if (Meteor.isServer) {
