@@ -6,8 +6,16 @@
   <div class="container">
     <h1>bbox</h1>
   </div>
+  <div class="login-buttons">
+    {{> loginButtons}}
+  </div>
+
+  <div class="box-create">
+    <input type="button" name="box-create" value="Create Box">
+  </div>
   <div class="boxes">
     {{#each boxes}}
+      {{> boxEdit}}
       {{> box}}
     {{/each}}
   </div>
@@ -15,9 +23,23 @@
 
 <template name="box">
   <div class="box">
-    <h1>{{human}}</h1>
+    <h1>{{name}}</h1>
+    <p>{{human}}</p>
     <a href="{{u1}}">{{t1}}</a>
     <a href="{{u2}}">{{t2}}</a>
     <a href="{{u3}}">{{t3}}</a>
   </div>
+</template>
+
+<template name="boxEdit">
+    <form class="box-edit">
+      <input type="text" name="name" value="{{name}}"/>
+      <input type="text" name="t1" value="{{t1}}"/>
+      <input type="text" name="u1" value="{{u1}}"/>
+      <input type="text" name="t2" value="{{t2}}"/>
+      <input type="text" name="u2" value="{{u2}}"/>
+      <input type="text" name="t3" value="{{t3}}"/>
+      <input type="text" name="u3" value="{{u3}}"/>
+      <input type="submit" value="Save">
+    </form>
 </template>
