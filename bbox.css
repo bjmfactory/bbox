@@ -1,3 +1,20 @@
+/* Elements */
+body {
+  font-family: "Helvetica Neue", helvetica, sans-serif;
+}
+
+/* Page */
+#page {
+  margin: 50px 0px 0px 300px;
+  height: 100%;
+}
+
+/* Login */
+#login-buttons {
+  margin-top: 20px;
+}
+
+/* Box */
 .box {
   float: left;
   width: 33%;
@@ -23,4 +40,28 @@ input {
   display: block;
   padding: 10px;
   margin: 10px;
+}
+
+/* Navigation */
+#nav {
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  width: 100px;
+  padding: 50px 50px 100% 50px;
+  border-right: 1px solid #eee;
+}
+
+#nav > h1 {
+  font-size: 1em;
+  padding-bottom: 20px;
+  margin: 0px 0px 10px 0px;
+  font-weight: 400;
+}
+
+#nav > a {
+  display: block;
+  padding: 10px 0px;
+  color: black;
+  font-size: 1em;
 }
