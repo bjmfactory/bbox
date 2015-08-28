@@ -1,6 +1,6 @@
 /* Elements */
 body {
-  font-family: "Helvetica Neue", helvetica, sans-serif;
+  font-family: "Helvetica Neue", sans-serif;
 }
 
 /* Page */
@@ -16,18 +16,38 @@ body {
 
 /* Box */
 .box {
-  float: left;
-  width: 33%;
-  padding: 20px;
-  margin: 20px;
-  border: 1px solid black;
+  border: 1px solid #ccc;
+  height: 200px; /* this breaks if link is longer than 1 line */
+  width: 200px;
+  padding: 10px 0px 0px 10px;
+  margin: 100px;
 }
 
 .box a {
   display: block;
-  color: black;
+  color: #222;
+  font-weight: 300;
+  text-decoration: none;
+  padding: 14px 0px 14px 0px;
+  border-top: 1px solid #ebebeb;
 }
 
+.box h1 {
+  color: #222;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1.1em;
+}
+
+.box h2 {
+  margin: 0;
+  color: #888;
+  font-weight: 200;
+  font-size: 1em;
+  padding-bottom: 18px
+}
+
+/* Box Edit */
 .box-edit {
   float: left;
   width: 33%;
