@@ -1,25 +1,33 @@
-<head>
-  <title>bbox</title>
-</head>
+<template name="ApplicationLayout">
+  <head></head>
+  <body>
+    <div class="container">
+      <div id="nav">
+        <h1>Brevity Box</h1>
+        <a href="#">index</a>
+        <a href="#">box</a>
+        <a href="#">edit/login</a>
+        <div id="login-buttons">
+          {{> loginButtons}}
+        </div>
+      </div>
+      <div id="page">
+        {{> yield }}
+      </div>
+    </div>
+  </body>
+</template>
 
-<body>
-  <div class="container">
-    <h1>bbox</h1>
-  </div>
-  <div class="login-buttons">
-    {{> loginButtons}}
-  </div>
+<template name="boxEditPage">
+  {{#each boxes}}
+    {{> boxEdit}}
+    {{> box}}
+  {{/each}}
+</template>
 
-  <div class="box-create">
-    <input type="button" name="box-create" value="Create Box">
-  </div>
-  <div class="boxes">
-    {{#each boxes}}
-      {{> boxEdit}}
-      {{> box}}
-    {{/each}}
-  </div>
-</body>
+<template name="home">
+  <h1>In the home template</h1>
+</template>
 
 <template name="box">
   <div class="box">

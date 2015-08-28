@@ -1,6 +1,17 @@
 Boxes = new Mongo.Collection("boxes") ;
 
 if (Meteor.isClient) {
+  Router.configure({
+    layoutTemplate: 'ApplicationLayout'
+  })
+
+  Router.route('/', function(){
+    this.render('home');
+    this.render('nav', {to: 'nav'});
+  })
+
+
+
   Template.body.helpers({
     boxes: function(){
       return Boxes.find({});
