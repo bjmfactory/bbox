@@ -29,10 +29,19 @@
   <h1>In the home template</h1>
 </template>
 
+<template name="loading">
+  <p>Loading...</p>
+</template>
+<template name="boxPage">
+  <h1>In the boxPage</h1>
+  {{> box}}
+  <p>link to the index</p>
+</template>
+
 <template name="box">
   <div class="box">
     <h1>{{name}}</h1>
-    <p>{{human}}</p>
+    <h2>{{human}}</h2>
     <a href="{{u1}}">{{t1}}</a>
     <a href="{{u2}}">{{t2}}</a>
     <a href="{{u3}}">{{t3}}</a>
