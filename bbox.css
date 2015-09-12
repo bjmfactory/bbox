@@ -1,6 +1,51 @@
 /* Elements */
 body {
   font-family: "Helvetica Neue", sans-serif;
+
+}
+
+/* Text */
+
+/*t-COLOR-WEIGHT*/
+.t-bla-l {
+  font-size: 1em;
+  color: #222;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.t-bla-b {
+  font-size: 1.1em;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.t-blu-l {
+  font-size: 1em;
+  color: #0066ff;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.t-blu-b {
+  font-size: 1em;
+  color: #0066ff;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.t-red-l {
+  font-size: 1em;
+  color: #ff3a2d;
+  font-weight: 300;
+  text-decoration: none;
+}
+
+.t-red-b {
+  font-size: 1em;
+  color: #ff3a2d;
+  font-weight: 500;
+  text-decoration: none;
 }
 
 /* Page */
@@ -17,43 +62,33 @@ body {
 /* Box */
 .box {
   border: 1px solid #ccc;
-  height: 200px; /* this breaks if link is longer than 1 line */
-  width: 200px;
+  height: 190px; /* this breaks if link is longer than 1 line */
+  width: 190px;
   padding: 10px 0px 0px 10px;
-  margin: 100px;
 }
 
 .box a {
   display: block;
-  color: #222;
-  font-weight: 300;
-  text-decoration: none;
-  padding: 14px 0px 14px 0px;
+  padding: 13px 0px;
   border-top: 1px solid #ebebeb;
 }
 
 .box h1 {
   color: #222;
   margin: 0;
-  font-weight: 500;
-  font-size: 1.1em;
 }
 
 .box h2 {
   margin: 0;
-  color: #888;
-  font-weight: 200;
-  font-size: 1em;
-  padding-bottom: 18px
+  padding-bottom: 16px
 }
 
 /* Box Edit */
 .box-edit {
-  float: left;
-  width: 33%;
+  width: 200px;
+  margin: 0 0 20px 0;
   padding: 20px;
-  margin: 20px;
-  border: 1px solid black;
+  border: 1px solid #ccc;
 }
 
 input {
@@ -73,24 +108,20 @@ input {
 }
 
 #nav > h1 {
-  font-size: 1em;
   padding-bottom: 20px;
   margin: 0px 0px 10px 0px;
-  font-weight: 400;
 }
 
 #nav > a {
   display: block;
   padding: 10px 0px;
-  color: black;
-  font-size: 1em;
 }
 
 /* Buttons */
 
 /*
 
-ios blue link is #0076ff
+ios blue link is #0066ff
 ios gray text is #8e8e93
 
 */

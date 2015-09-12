@@ -3,10 +3,10 @@
   <body>
     <div class="container">
       <div id="nav">
-        <h1>Brevity Box</h1>
-        <a href="#">index</a>
-        <a href="#">box</a>
-        <a href="#">edit/login</a>
+        <h1 class="t-bla-l">Brevity Box</h1>
+        <a class="t-blu-l" href="#">index</a>
+        <a class="t-blu-l" href="#">box</a>
+        <a class="t-blu-l" href="#">edit/login</a>
         <div id="login-buttons">
           {{> loginButtons}}
         </div>
@@ -19,32 +19,40 @@
 </template>
 
 <template name="boxEditPage">
-  {{#each boxes}}
+  <h1>In boxEditPage</h1>
     {{> boxEdit}}
     {{> box}}
-  {{/each}}
 </template>
 
 <template name="home">
-  <h1>In the home template</h1>
+  <h1 class="t-bla-b">In the home template</h1>
+</template>
+
+<template name="text">
+  <p class="t-bla-l"> This is black light text. It is used for standard text, box links, and the logo.</p>
+  <p class="t-bla-b"> This is black bold text. It is used for names and other headings. It is a little bigger. </p>
+  <p class="t-blu-l"> This is blue light text. It is used for usernames, navigation links, internal links, and admin options such as edit, cancel, etc.</p>
+  <p class="t-blu-b"> This is blue bold text. It is used for user actions, such as save.</p>
+  <p class="t-red-l"> This is red light text. It is used for text explaning something very important. </p>
+  <p class="t-red-b"> This is red bold text. It is used for deleting your account or other serious user actions. </p>
 </template>
 
 <template name="loading">
   <p>Loading...</p>
 </template>
 <template name="boxPage">
-  <h1>In the boxPage</h1>
+  <h1 class="t-bla-b">In the boxPage</h1>
   {{> box}}
-  <p>link to the index</p>
+  <button class="create-box">Create Box</button>
 </template>
 
 <template name="box">
   <div class="box">
-    <h1>{{name}}</h1>
-    <h2>{{human}}</h2>
-    <a href="{{u1}}">{{t1}}</a>
-    <a href="{{u2}}">{{t2}}</a>
-    <a href="{{u3}}">{{t3}}</a>
+    <h1 class="t-bla-b">{{name}}</h1>
+    <h2 class="t-blu-l">{{human}}</h2>
+    <a class="t-bla-l" href="{{u1}}">{{t1}}</a>
+    <a class="t-bla-l" href="{{u2}}">{{t2}}</a>
+    <a class="t-bla-l" href="{{u3}}">{{t3}}</a>
   </div>
 </template>
 
