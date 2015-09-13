@@ -8,6 +8,18 @@ if (Meteor.isServer) {
   Meteor.publish("boxes", function(){
     return Boxes.find();
   });
+
+  // Accounts
+  Accounts.onCreateUser(function(options, user) {
+    Meteor.call("createBox", user.username, user._id);
+    // create index here as well
+
+    if (options.profile) {
+      user.profile = options.profile;
+    }
+
+    return user;
+  });
 }
 
 if (Meteor.isClient) {
@@ -96,10 +108,7 @@ if (Meteor.isClient) {
 }
 
 Meteor.methods({
-  createBox: function() {
-    if (!Meteor.userId()){
-      throw new Meteor.Error("not-authorized");
-    }
+  createBox: function(human, owner) {
 
     var name = "Jane Doe";
     var t1 = "search";
@@ -119,8 +128,8 @@ Meteor.methods({
       u3: u3,
       createdAt: new Date(),
       updatedAt: new Date(),
-      human: Meteor.user().username,
-      owner: Meteor.userId()
+      human: human,
+      owner: owner
     });
   },
   editBox: function(boxId, box){
