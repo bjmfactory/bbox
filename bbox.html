@@ -4,9 +4,9 @@
     <div class="container">
       <div id="nav">
         <h1 class="t-bla-l">Brevity Box</h1>
-        <a class="t-blu-l" href="#">index</a>
-        <a class="t-blu-l" href="#">box</a>
-        <a class="t-blu-l" href="#">edit/login</a>
+        <a class="t-blu-l" href="#">Index</a>
+        <a class="t-blu-l" href="#">Edit</a>
+        <a class="t-blu-l" href="#">More</a>
         <div id="login-buttons">
           {{> loginButtons}}
         </div>
@@ -38,10 +38,10 @@
 </template>
 
 <template name="loading">
-  <p>Loading...</p>
+  <p class="t-bla-l">Loading...</p>
 </template>
+
 <template name="boxPage">
-  <h1 class="t-bla-b">In the boxPage</h1>
   {{> box}}
   <button class="create-box">Create Box</button>
 </template>
