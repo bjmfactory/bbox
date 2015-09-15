@@ -12,6 +12,7 @@
         </div>
       </div>
       <div id="page">
+        {{> yield "head"}}
         {{> yield }}
       </div>
     </div>
@@ -19,7 +20,6 @@
 </template>
 
 <template name="boxEditPage">
-  <h1>In boxEditPage</h1>
     {{> boxEdit}}
     {{> box}}
 </template>
@@ -43,7 +43,22 @@
 
 <template name="boxPage">
   {{> box}}
-  <button class="create-box">Create Box</button>
+</template>
+
+<template name="indexPage">
+  <p>In index page</p>
+  {{> index}}
+</template>
+
+<template name="indexHead">
+  <h1 class="t-bla-b">{{name}}</h1>
+  <h2 class="t-blu-l">{{human}}</h2>
+</template>
+
+<template name="index">
+  {{#each this}}
+    {{> box}}
+  {{/each}}
 </template>
 
 <template name="box">

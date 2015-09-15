@@ -1,4 +1,5 @@
 Boxes = new Mongo.Collection("boxes");
+Indexes = new Mongo.Collection("indexes");
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
@@ -9,10 +10,14 @@ if (Meteor.isServer) {
     return Boxes.find();
   });
 
+  Meteor.publish("indexes", function(){
+    return Indexes.find();
+  })
+
   // Accounts
   Accounts.onCreateUser(function(options, user) {
     Meteor.call("createBox", user.username, user._id);
-    // create index here as well
+    Meteor.call("createIndex", user.username, user._id);
 
     if (options.profile) {
       user.profile = options.profile;
@@ -24,6 +29,7 @@ if (Meteor.isServer) {
 
 if (Meteor.isClient) {
   Meteor.subscribe("boxes");
+  Meteor.subscribe("indexes");
 
   // Routes
   Router.configure({
@@ -39,7 +45,7 @@ if (Meteor.isClient) {
   })
 
   Router.route('/b/:human', {
-    name: 'boxPage',
+    name: 'box',
     subscriptions: function(){
       var human = this.params.human;
       this.subscribe('boxes', { human: human });
@@ -53,21 +59,68 @@ if (Meteor.isClient) {
     }
   });
 
-  Router.route('e/b/:human', {
-    name: 'boxEditPage',
-    subscriptions: function(){
-      var human = this.params.human;
-      this.subscribe('boxes', { human: human });
-    },
-    action: function(){
-      this.render();
-    },
-    data: function(){
-      var human = this.params.human;
-      return Boxes.findOne({ human: human })
-    }
+  Router.route('/i/:human', function() {
+    var human = this.params.human;
+    var index = Indexes.findOne({ human: human });
+    var humans = index.humans;
+
+    this.render('index-head', {
+      to: 'head',
+      data: function(){
+        return Indexes.findOne({ human: human })
+      }
+    })
+
+    this.render('index', {
+      data: function(){
+        return Boxes.find({ human: {$in: humans } })
+      }
+    })
+    // name: 'indexPage',
+    // subscriptions: function(){
+    //   var human = this.params.human;
+    //   this.subscribe('indexes', { human: human });
+    //   var index = Indexes.findOne({ human: human });
+    //   var humans = index.humans;
+    //   this.subscribe('boxes', {human: {$in: humans}})
+    // },
+    // action: function(){
+    //   if (this.ready()){
+    //     this.render();
+    //   } else {
+    //     this.render('loading')
+    //   }
+    // },
+    // data: function(){
+    //   var human = this.params.human;
+    //   var index = Indexes.findOne({ human: human});
+    //   console.log("index: ", index)
+    //   var humans = index.humans;
+    //   console.log("humans: ", humans)
+    //   var data = Boxes.find({ human: {$in: humans} });
+    //   console.log("data: ", data)
+    //   return data;
+    // }
   })
 
+  Router.route('e/b', {
+    name: 'boxEditPage',
+    subscriptions: function(){
+      var owner = Meteor.userId();
+      this.subscribe('boxes', { owner: owner });
+    },
+    action: function(){
+      if (this.ready()){
+        this.render();
+      } else {
+        this.render('loading');
+      }
+    },
+    data: function(){
+      var owner = Meteor.userId();
+      return Boxes.findOne({ owner: owner })
+    }
+  });
 
   Template.body.helpers({
     boxes: function(){
@@ -95,9 +148,7 @@ if (Meteor.isClient) {
       box.t3 = event.target.t3.value;
       box.u3 = event.target.u3.value;
 
-      console.log("boxEditPage- this:", this)
-      console.log("boxEditPage- box:", box)
-      Meteor.call("editBox", this._id, box)
+      Meteor.call("editBox", this._id, box, this.owner)
     }
   });
 
@@ -108,6 +159,7 @@ if (Meteor.isClient) {
 }
 
 Meteor.methods({
+  // Box Methods
   createBox: function(human, owner) {
 
     var name = "Jane Doe";
@@ -132,7 +184,12 @@ Meteor.methods({
       owner: owner
     });
   },
-  editBox: function(boxId, box){
+
+  editBox: function(boxId, box, owner){
+    if (owner !== Meteor.userId()){
+      throw new Meteor.Error("not-authorized");
+    }
+
     Boxes.update( boxId, { $set:
       {
         name: box.name,
@@ -145,6 +202,32 @@ Meteor.methods({
         updatedAt: new Date()
       }
     })
-  }
+  },
+
+  // Index Methods
+  createIndex: function(human, owner) {
+    var name   = "Jane Doe"
+    var humans = [
+      "bjmfactory",
+      "andrew",
+      "boheim",
+      "ryanpainter",
+      "dianakimball",
+      "sivers",
+      "julianna",
+      "lemony",
+      "snicket"
+    ];
+
+    Indexes.insert({
+      name: name,
+      humans: humans,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      human: human,
+      owner: owner
+    });
+  },
+
 });
 
