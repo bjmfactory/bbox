@@ -52,6 +52,7 @@ body {
 #page {
   margin: 50px 0px 0px 300px;
   height: 100%;
+  max-width: 680px;
 }
 
 /* Login */
@@ -59,12 +60,25 @@ body {
   margin-top: 20px;
 }
 
+/* Index */
+.index-head h1 {
+  margin: 0;
+}
+
+.index-head h2 {
+  margin: 0 0 20px 0;
+  padding: 0 0 10px 0;
+  border-bottom: 1px solid #eee;
+}
+
 /* Box */
 .box {
   border: 1px solid #ccc;
   height: 190px; /* this breaks if link is longer than 1 line */
   width: 190px;
-  padding: 10px 0px 0px 10px;
+  padding: 10px 0 0 10px;
+  margin: 0 20px 20px 0;
+  display: inline-block;
 }
 
 .box a {
@@ -74,13 +88,12 @@ body {
 }
 
 .box h1 {
-  color: #222;
   margin: 0;
 }
 
 .box h2 {
   margin: 0;
-  padding-bottom: 16px
+  padding-bottom: 15px
 }
 
 /* Box Edit */
