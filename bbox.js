@@ -62,7 +62,16 @@ if (Meteor.isClient) {
   Router.route('/i/:human', function() {
     var human = this.params.human;
     var index = Indexes.findOne({ human: human });
-    var humans = index.humans;
+    var humans = [];
+    humans[0] = index.h1
+    humans[1] = index.h2
+    humans[2] = index.h3
+    humans[3] = index.h4
+    humans[4] = index.h5
+    humans[5] = index.h6
+    humans[6] = index.h7
+    humans[7] = index.h8
+    humans[8] = index.h9
 
     this.render('index-head', {
       to: 'head',
@@ -76,31 +85,6 @@ if (Meteor.isClient) {
         return Boxes.find({ human: {$in: humans } })
       }
     })
-    // name: 'indexPage',
-    // subscriptions: function(){
-    //   var human = this.params.human;
-    //   this.subscribe('indexes', { human: human });
-    //   var index = Indexes.findOne({ human: human });
-    //   var humans = index.humans;
-    //   this.subscribe('boxes', {human: {$in: humans}})
-    // },
-    // action: function(){
-    //   if (this.ready()){
-    //     this.render();
-    //   } else {
-    //     this.render('loading')
-    //   }
-    // },
-    // data: function(){
-    //   var human = this.params.human;
-    //   var index = Indexes.findOne({ human: human});
-    //   console.log("index: ", index)
-    //   var humans = index.humans;
-    //   console.log("humans: ", humans)
-    //   var data = Boxes.find({ human: {$in: humans} });
-    //   console.log("data: ", data)
-    //   return data;
-    // }
   })
 
   Router.route('e/b', {
@@ -122,17 +106,30 @@ if (Meteor.isClient) {
     }
   });
 
+  Router.route('e/i', {
+    name: 'indexEditPage',
+    subscriptions: function(){
+      var owner = Meteor.userId();
+      this.subscribe('indexes', { owner: owner })
+    },
+    action: function(){
+      if (this.ready()){
+        this.render();
+      } else {
+        this.render('loading');
+      }
+    },
+    data: function(){
+      var owner = Meteor.userId();
+      return Indexes.findOne({ owner: owner })
+    }
+  });
+
   Template.body.helpers({
     boxes: function(){
       return Boxes.find({});
     }
   });
-
-  Template.boxPage.events({
-    "click .create-box": function(event){
-      Meteor.call("createBox")
-    }
-  })
 
   Template.boxEditPage.events({
     "submit .box-edit": function(event){
@@ -151,6 +148,27 @@ if (Meteor.isClient) {
       Meteor.call("editBox", this._id, box, this.owner)
     }
   });
+
+  Template.indexEditPage.events({
+    "submit .index-edit": function(event){
+      event.preventDefault();
+
+      var index = {};
+
+      index.name = event.target.name.value;
+      index.h1 = event.target.h1.value;
+      index.h2 = event.target.h2.value;
+      index.h3 = event.target.h3.value;
+      index.h4 = event.target.h4.value;
+      index.h5 = event.target.h5.value;
+      index.h6 = event.target.h6.value;
+      index.h7 = event.target.h7.value;
+      index.h8 = event.target.h8.value;
+      index.h9 = event.target.h9.value;
+
+      Meteor.call("editIndex", this._id, index, this.owner)
+    }
+  })
 
   // Accounts
   Accounts.ui.config({
@@ -204,24 +222,52 @@ Meteor.methods({
     })
   },
 
+  editIndex: function(indexId, index, owner){
+    if (owner !== Meteor.userId()){
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Indexes.update(indexId, {$set:
+      {
+        name: index.name,
+        h1: index.h1,
+        h2: index.h2,
+        h3: index.h3,
+        h4: index.h4,
+        h5: index.h5,
+        h6: index.h6,
+        h7: index.h7,
+        h8: index.h8,
+        h9: index.h9,
+        updatedAt: new Date()
+      }
+    })
+  },
+
   // Index Methods
   createIndex: function(human, owner) {
-    var name   = "Jane Doe"
-    var humans = [
-      "bjmfactory",
-      "andrew",
-      "boheim",
-      "ryanpainter",
-      "dianakimball",
-      "sivers",
-      "julianna",
-      "lemony",
-      "snicket"
-    ];
+    var name = "Jane Doe"
+    var h1 = "bjmfactory"
+    var h2 = "andrew"
+    var h3 = "ryanpainter"
+    var h4 = "dianakimball"
+    var h5 = "sivers"
+    var h6 = "julianna"
+    var h7 = "lemony"
+    var h8 = "bdylan"
+    var h9 = "nyoung"
 
     Indexes.insert({
+      h1: h1,
+      h2: h2,
+      h3: h3,
+      h4: h4,
+      h5: h5,
+      h6: h6,
+      h7: h7,
+      h8: h8,
+      h9: h9,
       name: name,
-      humans: humans,
       createdAt: new Date(),
       updatedAt: new Date(),
       human: human,

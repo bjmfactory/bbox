@@ -20,8 +20,12 @@
 </template>
 
 <template name="boxEditPage">
-    {{> boxEdit}}
-    {{> box}}
+  {{> boxEdit}}
+  {{> box}}
+</template>
+
+<template name="indexEditPage">
+  {{> indexEdit}}
 </template>
 
 <template name="home">
@@ -43,11 +47,6 @@
 
 <template name="boxPage">
   {{> box}}
-</template>
-
-<template name="indexPage">
-  <p>In index page</p>
-  {{> index}}
 </template>
 
 <template name="indexHead">
@@ -84,4 +83,20 @@
       <input type="text" name="u3" value="{{u3}}"/>
       <input type="submit" value="Save">
     </form>
+</template>
+
+<template name="indexEdit">
+  <form class="index-edit">
+    <input type="text" name="name" value="{{name}}"/>
+    <input type="text" name="h1" value="{{h1}}"/>
+    <input type="text" name="h2" value="{{h2}}"/>
+    <input type="text" name="h3" value="{{h3}}"/>
+    <input type="text" name="h4" value="{{h4}}"/>
+    <input type="text" name="h5" value="{{h5}}"/>
+    <input type="text" name="h6" value="{{h6}}"/>
+    <input type="text" name="h7" value="{{h7}}"/>
+    <input type="text" name="h8" value="{{h8}}"/>
+    <input type="text" name="h9" value="{{h9}}"/>
+    <input type="submit" value="Save">
+  </form>
 </template>
