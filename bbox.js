@@ -87,7 +87,7 @@ if (Meteor.isClient) {
     })
   })
 
-  Router.route('e/b', {
+  Router.route('e/box', {
     name: 'boxEditPage',
     subscriptions: function(){
       var owner = Meteor.userId();
@@ -106,7 +106,7 @@ if (Meteor.isClient) {
     }
   });
 
-  Router.route('e/i', {
+  Router.route('e/index', {
     name: 'indexEditPage',
     subscriptions: function(){
       var owner = Meteor.userId();
