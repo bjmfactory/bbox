@@ -1,47 +1,45 @@
 /* Elements */
-body {
+html {
   font-family: "Helvetica Neue", sans-serif;
 
 }
 
-/* Text */
-
-/*t-COLOR-WEIGHT*/
-.t-bla-l {
+p, h1, h2, h3, h4, h5, h6, ol, ul, div, input, a {
+  font-family: "Helvetica Neue", sans-serif;
   font-size: 1em;
-  color: #222;
   font-weight: 300;
+  color: rgba(0,0,0,0.8);
   text-decoration: none;
 }
 
-.t-bla-b {
+input[type=text] {
+  display: block;
+  padding: 15px;
+  margin: 0 0 20px 0;
+  border: 1px solid #ccc;
+  font-size: 1.5em;
+}
+
+input[type=submit] {
+  display: block;
+}
+
+/* Text */
+
+.bold-text {
   font-size: 1.1em;
   font-weight: 500;
   text-decoration: none;
 }
 
-.t-blu-l {
+.blue-link {
   font-size: 1em;
-  color: #0066ff;
+  color: rgba(0,100,250,0.9);
   font-weight: 300;
   text-decoration: none;
 }
 
-.t-blu-b {
-  font-size: 1em;
-  color: #0066ff;
-  font-weight: 500;
-  text-decoration: none;
-}
-
-.t-red-l {
-  font-size: 1em;
-  color: #ff3a2d;
-  font-weight: 300;
-  text-decoration: none;
-}
-
-.t-red-b {
+.red-text {
   font-size: 1em;
   color: #ff3a2d;
   font-weight: 500;
@@ -79,11 +77,12 @@ body {
   padding: 10px 0 0 10px;
   margin: 0 20px 20px 0;
   display: inline-block;
+  overflow: hidden;
 }
 
 .box a {
   display: block;
-  padding: 13px 0px;
+  padding: 15px 0px;
   border-top: 1px solid #eee;
 }
 
@@ -98,16 +97,21 @@ body {
 
 /* Box Edit */
 .box-edit {
-  width: 200px;
-  margin: 0 0 20px 0;
-  padding: 20px;
-  border: 1px solid #ccc;
+  float: left;
+  margin: 0 60px 0 0;
 }
 
-input {
+/* Index Edit */
+
+.index-edit input[type=text] {
+  margin: 0 20px 20px 0;
+  width: 170px;
+  display: inline-block;
+}
+
+.index-edit input[name=name] {
   display: block;
-  padding: 10px;
-  margin: 10px;
+  width: auto;
 }
 
 /* Navigation */
@@ -132,12 +136,7 @@ input {
 
 /* Buttons */
 
-/*
 
-ios blue link is #0066ff
-ios gray text is #8e8e93
-
-*/
 
 
 
