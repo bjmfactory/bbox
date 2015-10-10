@@ -4,8 +4,9 @@
     <div class="container">
       <div id="nav">
         <h1>Brevity Box</h1>
-        <a class="blue-link" href="#">Index</a>
-        <a class="blue-link" href="#">Edit</a>
+        <a class="blue-link" href="{{pathFor route='index' human=loggedInHuman}}">Index</a>
+        <a class="blue-link" href="{{pathFor route='boxEditPage'}}">Edit Box</a>
+        <a class="blue-link" href="{{pathFor route='indexEditPage'}}">Edit Index</a>
         <a class="blue-link" href="#">More</a>
         <div id="login-buttons">
           {{> loginButtons}}
@@ -26,6 +27,7 @@
 
 <template name="indexEditPage">
   {{> indexEdit}}
+
 </template>
 
 <template name="home">
@@ -50,7 +52,7 @@
 <template name="indexHead">
   <div class="index-head">
     <h1 class="bold-text">{{name}}</h1>
-    <h2 class="blue-link">{{human}}</h2>
+    <h2><a class="blue-link" href="{{pathFor route='box'}}">{{human}}</a></h2>
   </div>
 </template>
 
@@ -63,7 +65,7 @@
 <template name="box">
   <div class="box">
     <h1 class="bold-text">{{name}}</h1>
-    <h2 class="blue-link">{{human}}</h2>
+    <h2><a class="blue-link" href="{{pathFor route='index'}}">{{human}}</a></h2>
     <a href="{{u1}}">{{t1}}</a>
     <a href="{{u2}}">{{t2}}</a>
     <a href="{{u3}}">{{t3}}</a>

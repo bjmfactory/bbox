@@ -80,7 +80,7 @@ input[type=submit] {
   overflow: hidden;
 }
 
-.box a {
+.box > a {
   display: block;
   padding: 15px 0px;
   border-top: 1px solid #eee;

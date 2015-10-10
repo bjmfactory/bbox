@@ -85,7 +85,9 @@ if (Meteor.isClient) {
         return Boxes.find({ human: {$in: humans } })
       }
     })
-  })
+  }, {
+    name: 'index'
+  });
 
   Router.route('e/box', {
     name: 'boxEditPage',
@@ -125,12 +127,6 @@ if (Meteor.isClient) {
     }
   });
 
-  Template.body.helpers({
-    boxes: function(){
-      return Boxes.find({});
-    }
-  });
-
   Template.boxEditPage.events({
     "submit .box-edit": function(event){
       event.preventDefault();
@@ -148,6 +144,12 @@ if (Meteor.isClient) {
       Meteor.call("editBox", this._id, box, this.owner)
     }
   });
+
+  Template.ApplicationLayout.helpers({
+    loggedInHuman: function() {
+      return Meteor.user().username;
+    }
+  })
 
   Template.indexEditPage.events({
     "submit .index-edit": function(event){
@@ -222,28 +224,6 @@ Meteor.methods({
     })
   },
 
-  editIndex: function(indexId, index, owner){
-    if (owner !== Meteor.userId()){
-      throw new Meteor.Error("not-authorized");
-    }
-
-    Indexes.update(indexId, {$set:
-      {
-        name: index.name,
-        h1: index.h1,
-        h2: index.h2,
-        h3: index.h3,
-        h4: index.h4,
-        h5: index.h5,
-        h6: index.h6,
-        h7: index.h7,
-        h8: index.h8,
-        h9: index.h9,
-        updatedAt: new Date()
-      }
-    })
-  },
-
   // Index Methods
   createIndex: function(human, owner) {
     var name = "Jane Doe"
@@ -273,6 +253,28 @@ Meteor.methods({
       human: human,
       owner: owner
     });
+  },
+
+  editIndex: function(indexId, index, owner){
+    if (owner !== Meteor.userId()){
+      throw new Meteor.Error("not-authorized");
+    }
+
+    Indexes.update(indexId, {$set:
+      {
+        name: index.name,
+        h1: index.h1,
+        h2: index.h2,
+        h3: index.h3,
+        h4: index.h4,
+        h5: index.h5,
+        h6: index.h6,
+        h7: index.h7,
+        h8: index.h8,
+        h9: index.h9,
+        updatedAt: new Date()
+      }
+    })
   },
 
 });
