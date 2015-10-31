@@ -36,8 +36,16 @@ if (Meteor.isClient) {
     layoutTemplate: 'ApplicationLayout'
   });
 
-  Router.route('/', function(){
-    this.render('home');
+  Router.route('/', {
+    subscriptions: function(){
+      this.subscribe('boxes', { human: "bbox" });
+    },
+    action: function(){
+      this.render('box');
+    },
+    data: function(){
+      return Boxes.findOne({ human: "bbox"});
+    }
   });
 
   Router.route('/text', function(){
@@ -144,12 +152,6 @@ if (Meteor.isClient) {
       Meteor.call("editBox", this._id, box, this.owner)
     }
   });
-
-  Template.ApplicationLayout.helpers({
-    loggedInHuman: function() {
-      return Meteor.user().username;
-    }
-  })
 
   Template.indexEditPage.events({
     "submit .index-edit": function(event){

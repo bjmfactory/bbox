@@ -5,11 +5,12 @@
   <body>
     <div class="container">
       <div id="nav">
-        <h1>Brevity Box</h1>
-        <a class="blue-link" href="{{pathFor route='index' human=loggedInHuman}}">Index</a>
+        <h1><a href="/">Brevity Box</a></h1>
+        {{ #if currentUser}}
+        <a class="blue-link" href="{{pathFor route='index' human=currentUser.username}}">Index</a>
         <a class="blue-link" href="{{pathFor route='boxEditPage'}}">Edit Box</a>
         <a class="blue-link" href="{{pathFor route='indexEditPage'}}">Edit Index</a>
-        <a class="blue-link" href="#">More</a>
+        {{ /if }}
         <div id="login-buttons">
           {{> loginButtons}}
         </div>
@@ -43,11 +44,6 @@
 
 <template name="indexEditPage">
   {{> indexEdit}}
-
-</template>
-
-<template name="home">
-  <h1 class="bold-text">In the home template</h1>
 </template>
 
 <template name="text">
