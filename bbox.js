@@ -16,14 +16,26 @@ if (Meteor.isServer) {
 
   // Accounts
   Accounts.onCreateUser(function(options, user) {
-    Meteor.call("createBox", user.username, user._id);
-    Meteor.call("createIndex", user.username, user._id);
+    var email = user.emails[0];
+    var username = user.username;
 
-    if (options.profile) {
-      user.profile = options.profile;
+    var emailTaken = Meteor.users.find({emails: email}).fetch().length > 0;
+    var usernameTaken = Meteor.users.find({username: username}).fetch().length > 0;
+
+    if (!emailTaken && !usernameTaken){
+      Meteor.call("createBox", user.username, user._id);
+      Meteor.call("createIndex", user.username, user._id);
+
+      if (options.profile) {
+        user.profile = options.profile;
+      }
+
+      return user;
+    } else {
+      throw new Meteor.Error(403, "email or username is already registered");
     }
 
-    return user;
+
   });
 }
 
