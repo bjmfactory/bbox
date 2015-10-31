@@ -1,5 +1,7 @@
 <template name="ApplicationLayout">
-  <head></head>
+  <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+  </head>
   <body>
     <div class="container">
       <div id="nav">
@@ -16,6 +18,20 @@
         {{> yield "head"}}
         {{> yield }}
       </div>
+    </div>
+    <div class="mobile-container">
+      <p class="emoji"></p>
+      <p>Sooooo...</p>
+      <p>Brevity Box is not meant for small screens.</p>
+      <p class="emoji">&#x1F62D;</p>
+      <p>Read a </p>
+      <p class="emoji">&#x1F4D8;</p>
+      <p>Write a </p>
+      <p class="emoji">&#x1F48C;</p>
+      <p>Watch the </p>
+      <p class="emoji">&#x1F304;</p>
+      <p>You can always come back later!</p>
+      <p class="emoji">&#x1F49C;</p>
     </div>
   </body>
 </template>

@@ -88,11 +88,12 @@ input[type=submit] {
 
 .box h1 {
   margin: 0;
+  padding: 0;
 }
 
 .box h2 {
   margin: 0;
-  padding-bottom: 15px
+  padding: 0 0 15px 0;
 }
 
 /* Box Edit */
@@ -134,7 +135,30 @@ input[type=submit] {
   padding: 10px 0px;
 }
 
-/* Buttons */
+/* "Mobile" */
+.mobile-container {
+  display: none;
+}
+
+/* Media Query */
+
+@media only screen and (max-width : 768px) {
+  .container {
+    display: none;
+  }
+  .mobile-container {
+    display: block;
+  }
+  .mobile-container p {
+    text-align: center;
+    font-size: 2em;
+    margin: 14% 7% 0% 7%;
+  }
+  .mobile-container .emoji {
+    font-size: 10em;
+    margin: 5%;
+  }
+}
 
 
 
