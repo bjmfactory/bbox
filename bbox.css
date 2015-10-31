@@ -152,11 +152,7 @@ input[type=submit] {
   .mobile-container p {
     text-align: center;
     font-size: 2em;
-    margin: 14% 7% 0% 7%;
-  }
-  .mobile-container .emoji {
-    font-size: 10em;
-    margin: 5%;
+    margin: 14%;
   }
 }
 
